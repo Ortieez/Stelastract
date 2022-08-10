@@ -1,7 +1,10 @@
+const logger = require('node-color-log');
+logger.setDate(() => (new Date()).toLocaleTimeString());
+
 module.exports = {
 	name: 'ready',
 	once: true,
 	execute(client) {
-		console.log(`Ready! Logged in as ${client.user.tag}`);
+		logger.success(`Ready! Logged in as ${client.user.tag}`);
 	},
 };

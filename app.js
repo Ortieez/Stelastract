@@ -9,7 +9,7 @@
 *   
 */
 
-// Import all 
+// Import all important libraries and setup config
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
@@ -19,6 +19,9 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+
+const logger = require('node-color-log');
+logger.setDate(() => (new Date()).toLocaleTimeString())
 
 client.commands = new Collection();
 for (const file of commandFiles) {
@@ -34,7 +37,7 @@ client.on('interactionCreate', async interaction => {
 	try {
 		await command.execute(interaction);
 	} catch (error) {
-		console.error(error);
+		logger.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
