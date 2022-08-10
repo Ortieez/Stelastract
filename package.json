@@ -1,0 +1,15 @@
+{
+  "name": "stella",
+  "version": "0.0.1",
+  "main": "app.js",
+  "author": "Adam Lipert <a.lipert@protonmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "serve": "node deploy-commands.js && nodemon app.js"
+  },
+  "dependencies": {
+    "@discordjs/rest": "^1.0.1",
+    "discord.js": "^14.2.0"
+  }
+}
